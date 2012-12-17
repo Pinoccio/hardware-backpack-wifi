@@ -7,6 +7,8 @@
 - Add 500mA LDO regulator for Wi-Fi shield, directly from VBAT
 - Move hole cutout down to match changes in base board layout
 - Update header legends to map to base board header changes
+- Tie LDO enable pin to 3v3 header
+- Add 10uF/low ESR and 0.1uF to handle large spikes in µSD slot
 
 ----------------
 - v0.7
