@@ -1023,6 +1023,28 @@ Basic small signal diode good up to 200mA. SMB footprint. Common part #: BAS16</
 <rectangle x1="0.4572" y1="1.9908" x2="0.8128" y2="3.0068" layer="51"/>
 <rectangle x1="1.7272" y1="1.9908" x2="2.0828" y2="3.0068" layer="51"/>
 </package>
+<package name="SOT23-5">
+<description>&lt;b&gt;Small Outline Transistor&lt;/b&gt;</description>
+<wire x1="1.4224" y1="0.4294" x2="1.4224" y2="-0.4294" width="0.2032" layer="21"/>
+<wire x1="1.4" y1="-0.8" x2="-1.4" y2="-0.8" width="0.1524" layer="51"/>
+<wire x1="-1.4224" y1="-0.4294" x2="-1.4224" y2="0.4294" width="0.2032" layer="21"/>
+<wire x1="-1.4" y1="0.8" x2="1.4" y2="0.8" width="0.1524" layer="51"/>
+<wire x1="-0.2684" y1="0.8104" x2="0.2684" y2="0.8104" width="0.2032" layer="21"/>
+<wire x1="1.4" y1="0.8" x2="1.4" y2="-0.8" width="0.1524" layer="51"/>
+<wire x1="-1.4" y1="0.8" x2="-1.4" y2="-0.8" width="0.1524" layer="51"/>
+<smd name="1" x="-0.95" y="-1.3001" dx="0.55" dy="1.2" layer="1"/>
+<smd name="2" x="0" y="-1.3001" dx="0.55" dy="1.2" layer="1"/>
+<smd name="3" x="0.95" y="-1.3001" dx="0.55" dy="1.2" layer="1"/>
+<smd name="4" x="0.95" y="1.3001" dx="0.55" dy="1.2" layer="1"/>
+<smd name="5" x="-0.95" y="1.3001" dx="0.55" dy="1.2" layer="1"/>
+<text x="-0.889" y="2.159" size="0.4064" layer="25">&gt;NAME</text>
+<text x="-0.9525" y="-0.1905" size="0.4064" layer="27">&gt;VALUE</text>
+<rectangle x1="-1.2" y1="-1.5" x2="-0.7" y2="-0.85" layer="51"/>
+<rectangle x1="-0.25" y1="-1.5" x2="0.25" y2="-0.85" layer="51"/>
+<rectangle x1="0.7" y1="-1.5" x2="1.2" y2="-0.85" layer="51"/>
+<rectangle x1="0.7" y1="0.85" x2="1.2" y2="1.5" layer="51"/>
+<rectangle x1="-1.2" y1="0.85" x2="-0.7" y2="1.5" layer="51"/>
+</package>
 <package name="SON-6-DRV">
 <wire x1="0" y1="0" x2="0" y2="2.1" width="0.127" layer="51"/>
 <wire x1="0" y1="2.1" x2="2.1" y2="2.1" width="0.127" layer="51"/>
@@ -1038,6 +1060,9 @@ Basic small signal diode good up to 200mA. SMB footprint. Common part #: BAS16</
 <circle x="0.65" y="1.05" radius="0.180275" width="0.127" layer="51"/>
 <circle x="1.45" y="1.05" radius="0.180275" width="0.127" layer="51"/>
 <circle x="-0.05" y="0.05" radius="0.1" width="0.127" layer="21"/>
+</package>
+<package name="0.1-PAD">
+<smd name="P$1" x="0" y="0" dx="1.27" dy="1.27" layer="1" roundness="100" rot="R90" cream="no"/>
 </package>
 </packages>
 <symbols>
@@ -1226,7 +1251,6 @@ Basic small signal diode good up to 200mA. SMB footprint. Common part #: BAS16</
 <pin name="GND" x="-10.16" y="0" visible="pin" length="short" direction="in"/>
 <pin name="OUT" x="7.62" y="5.08" visible="pin" length="short" direction="out" rot="R180"/>
 <pin name="EN" x="-10.16" y="-5.08" visible="pin" length="short" direction="in"/>
-<pin name="N/C" x="5.08" y="-5.08" visible="off" length="point" direction="nc" rot="R180"/>
 </symbol>
 <symbol name="LDO-TPS73533">
 <wire x1="-5.08" y1="-7.62" x2="7.62" y2="-7.62" width="0.4064" layer="94"/>
@@ -1241,6 +1265,9 @@ Basic small signal diode good up to 200mA. SMB footprint. Common part #: BAS16</
 <pin name="EN" x="-7.62" y="-5.08" visible="pin" length="short" direction="in"/>
 <pin name="NR" x="10.16" y="-5.08" visible="pin" length="short" direction="out" rot="R180"/>
 <pin name="N/C" x="7.62" y="0" visible="off" length="point" direction="nc" rot="R180"/>
+</symbol>
+<symbol name="PAD">
+<pin name="P$1" x="5.08" y="0" visible="off" length="middle" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -1767,13 +1794,23 @@ These are standard reverse protection diodes and small signal diodes. SMA packag
 <gate name="G$1" symbol="LDO-TPS78233" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="SON-6-DRV">
+<device name="SON-6" package="SON-6-DRV">
 <connects>
 <connect gate="G$1" pin="EN" pad="P$4"/>
 <connect gate="G$1" pin="GND" pad="P$3 P$5 P$7"/>
 <connect gate="G$1" pin="IN" pad="P$6"/>
-<connect gate="G$1" pin="N/C" pad="P$2"/>
 <connect gate="G$1" pin="OUT" pad="P$1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="" package="SOT23-5">
+<connects>
+<connect gate="G$1" pin="EN" pad="3"/>
+<connect gate="G$1" pin="GND" pad="2 4"/>
+<connect gate="G$1" pin="IN" pad="1"/>
+<connect gate="G$1" pin="OUT" pad="5"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -1783,7 +1820,8 @@ These are standard reverse protection diodes and small signal diodes. SMA packag
 </deviceset>
 <deviceset name="LDO-TPS73533" prefix="U">
 <description>&lt;b&gt;Voltage Regulator LDO&lt;/b&gt;
-Standard 150mA LDO voltage regulator in SOT-23 layout. Micrel part MIC5205. BP (by-pass) pin is used to lower output noise with 470pF cap.</description>
+500mA, Low Quiescent Current, Ultra-LowNoise, High PSRR
+Low-Dropout Linear Regulator</description>
 <gates>
 <gate name="G$1" symbol="LDO-TPS73533" x="0" y="0"/>
 </gates>
@@ -1796,6 +1834,21 @@ Standard 150mA LDO voltage regulator in SOT-23 layout. Micrel part MIC5205. BP (
 <connect gate="G$1" pin="N/C" pad="P$5"/>
 <connect gate="G$1" pin="NR" pad="P$2"/>
 <connect gate="G$1" pin="OUT" pad="P$1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="PAD">
+<gates>
+<gate name="G$1" symbol="PAD" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="0.1-PAD">
+<connects>
+<connect gate="G$1" pin="P$1" pad="P$1"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -1843,6 +1896,7 @@ Standard 150mA LDO voltage regulator in SOT-23 layout. Micrel part MIC5205. BP (
 <part name="U$2" library="Pinoccio" deviceset="M25PX16" device=""/>
 <part name="U1" library="Pinoccio" deviceset="LDO-TPS78233" device=""/>
 <part name="U2" library="Pinoccio" deviceset="LDO-TPS73533" device=""/>
+<part name="U$3" library="Pinoccio" deviceset="PAD" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4585,6 +4639,7 @@ Standard 150mA LDO voltage regulator in SOT-23 layout. Micrel part MIC5205. BP (
 <instance part="U$2" gate="G$1" x="104.14" y="48.26"/>
 <instance part="U1" gate="G$1" x="50.8" y="63.5"/>
 <instance part="U2" gate="G$1" x="53.34" y="114.3"/>
+<instance part="U$3" gate="G$1" x="195.58" y="124.46" smashed="yes" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -4621,13 +4676,13 @@ Standard 150mA LDO voltage regulator in SOT-23 layout. Micrel part MIC5205. BP (
 <wire x1="170.18" y1="48.26" x2="170.18" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="GND"/>
 <wire x1="170.18" y1="40.64" x2="170.18" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="170.18" y1="43.18" x2="170.18" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="43.18" x2="170.18" y2="35.56" width="0.1524" layer="91"/>
 <wire x1="172.72" y1="40.64" x2="170.18" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="GND1"/>
 <wire x1="172.72" y1="43.18" x2="170.18" y2="43.18" width="0.1524" layer="91"/>
 <junction x="170.18" y="43.18"/>
 <junction x="170.18" y="40.64"/>
-<label x="167.64" y="22.86" size="1.778" layer="95"/>
+<label x="167.64" y="33.02" size="1.778" layer="95"/>
 <pinref part="C5" gate="G$1" pin="2"/>
 <wire x1="152.4" y1="43.18" x2="162.56" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="C4" gate="G$1" pin="2"/>
@@ -5047,6 +5102,14 @@ Standard 150mA LDO voltage regulator in SOT-23 layout. Micrel part MIC5205. BP (
 <pinref part="U$2" gate="G$1" pin="VCC"/>
 <wire x1="116.84" y1="50.8" x2="127" y2="50.8" width="0.1524" layer="91"/>
 <label x="116.84" y="50.8" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PGM_MODE" class="0">
+<segment>
+<pinref part="GS1011MIPS" gate="GS1011MIPS" pin="UART1_RTS/GPIO27"/>
+<wire x1="167.64" y1="124.46" x2="190.5" y2="124.46" width="0.1524" layer="91"/>
+<label x="182.88" y="124.46" size="1.778" layer="95"/>
+<pinref part="U$3" gate="G$1" pin="P$1"/>
 </segment>
 </net>
 </nets>
