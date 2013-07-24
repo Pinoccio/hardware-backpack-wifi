@@ -135,20 +135,6 @@
 <library name="Pinoccio">
 <description>Pinoccio Board Devices</description>
 <packages>
-<package name="FIDUCIAL-1.5X3">
-<circle x="0" y="0" radius="0.9055" width="1.27" layer="29"/>
-<smd name="1" x="0" y="0" dx="1.5" dy="1.5" layer="1" roundness="100" cream="no"/>
-</package>
-<package name="FIDUCIAL-1X2">
-<smd name="1" x="0" y="0" dx="1" dy="1" layer="1" roundness="100" cream="no"/>
-</package>
-<package name="FIDUCIAL-1X2.5">
-<circle x="0" y="0" radius="0.9" width="1.27" layer="29"/>
-<smd name="1" x="0" y="0" dx="1" dy="1" layer="1" roundness="100" cream="no"/>
-</package>
-<package name="MICRO-FIDUCIAL">
-<smd name="1" x="0" y="0" dx="0.635" dy="0.635" layer="1" roundness="100" cream="no"/>
-</package>
 <package name="GS1011MIPS">
 <wire x1="0" y1="0" x2="0" y2="28.7" width="0.127" layer="51"/>
 <wire x1="0" y1="28.7" x2="19.4" y2="28.7" width="0.127" layer="51"/>
@@ -1329,11 +1315,6 @@ Commonly used for 1/4W through-hole resistors. 0.3" pitch between holes.&lt;br&g
 <text x="1.524" y="7.62" size="2.54" layer="94" font="vector">TITLE:</text>
 <text x="15.494" y="7.62" size="2.7432" layer="94" font="vector">&gt;DRAWING_NAME</text>
 </symbol>
-<symbol name="FIDUCIAL">
-<wire x1="-0.762" y1="0.762" x2="0.762" y2="-0.762" width="0.254" layer="94"/>
-<wire x1="0.762" y1="0.762" x2="-0.762" y2="-0.762" width="0.254" layer="94"/>
-<circle x="0" y="0" radius="1.27" width="0.254" layer="94"/>
-</symbol>
 <symbol name="GS1011MIPS">
 <wire x1="0" y1="0" x2="0" y2="48.26" width="0.254" layer="94"/>
 <pin name="GND@1" x="-2.54" y="45.72" visible="pin" length="short"/>
@@ -1545,35 +1526,6 @@ Standard 8.5x11 US Letter frame</description>
 </gates>
 <devices>
 <device name="">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="FIDUCIAL" prefix="JP">
-<description>&lt;b&gt;Fiducial Alignment Points&lt;/b&gt;
-Various fiducial points for machine vision alignment.</description>
-<gates>
-<gate name="G$1" symbol="FIDUCIAL" x="0" y="0"/>
-</gates>
-<devices>
-<device name="1.5X3" package="FIDUCIAL-1.5X3">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="1X2" package="FIDUCIAL-1X2">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="1X2.5" package="FIDUCIAL-1X2.5">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="UFIDUCIAL" package="MICRO-FIDUCIAL">
 <technologies>
 <technology name=""/>
 </technologies>
@@ -2266,8 +2218,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <part name="FRAME1" library="Pinoccio" deviceset="FRAME-LETTER" device=""/>
 <part name="JP-R" library="Pinoccio" deviceset="M16" device="2MM"/>
 <part name="JP-L" library="Pinoccio" deviceset="M16" device="2MM"/>
-<part name="JP3" library="Pinoccio" deviceset="FIDUCIAL" device="UFIDUCIAL"/>
-<part name="JP5" library="Pinoccio" deviceset="FIDUCIAL" device="UFIDUCIAL"/>
 <part name="GS1011MIPS" library="Pinoccio" deviceset="GS1011MIPS" device=""/>
 <part name="U$1" library="Pinoccio" deviceset="MICROSD" device=""/>
 <part name="C5" library="Pinoccio" deviceset="CAP" device="0603-CAP" value="22uf"/>
@@ -2287,7 +2237,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <sheets>
 <sheet>
 <plain>
-<text x="238.76" y="1.27" size="2.54" layer="94" font="vector">0.11</text>
+<text x="238.76" y="1.27" size="2.54" layer="94" font="vector">0.13</text>
 <rectangle x1="0.38735" y1="0.29845" x2="0.41275" y2="0.31115" layer="21"/>
 <rectangle x1="0.36195" y1="0.31115" x2="0.45085" y2="0.32385" layer="21"/>
 <rectangle x1="0.33655" y1="0.32385" x2="0.47625" y2="0.33655" layer="21"/>
@@ -5004,8 +4954,6 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <instance part="FRAME1" gate="G$2" x="147.32" y="0"/>
 <instance part="JP-R" gate="G$1" x="243.84" y="104.14" rot="R180"/>
 <instance part="JP-L" gate="G$1" x="243.84" y="157.48" rot="R180"/>
-<instance part="JP3" gate="G$1" x="238.76" y="15.24"/>
-<instance part="JP5" gate="G$1" x="243.84" y="15.24"/>
 <instance part="GS1011MIPS" gate="GS1011MIPS" x="137.16" y="111.76"/>
 <instance part="U$1" gate="G$1" x="190.5" y="60.96"/>
 <instance part="C5" gate="G$1" x="152.4" y="45.72"/>
