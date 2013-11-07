@@ -1018,7 +1018,7 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="20.7264" y1="51.3588" x2="20.788" y2="51.2972" width="0.2032" layer="1"/>
 <wire x1="20.788" y1="51.2972" x2="22.4988" y2="51.2972" width="0.2032" layer="1"/>
 </signal>
-<signal name="VBUS">
+<signal name="VUSB">
 <contactref element="JP-L" pad="P$1"/>
 </signal>
 <signal name="SSN">

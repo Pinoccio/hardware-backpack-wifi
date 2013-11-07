@@ -5285,7 +5285,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <label x="193.04" y="142.24" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="VBUS" class="0">
+<net name="VUSB" class="0">
 <segment>
 <pinref part="JP-L" gate="G$1" pin="1"/>
 <wire x1="233.68" y1="177.8" x2="218.44" y2="177.8" width="0.1524" layer="91"/>
