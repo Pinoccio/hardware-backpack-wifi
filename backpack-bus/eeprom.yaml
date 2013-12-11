@@ -1,0 +1,68 @@
+# This defines the EEPROM contents for the wifi backpack (not
+# final data yet).
+#
+# Encode by running:
+# $ ./pinoccio-eeprom-tool bp-eeprom.yaml
+pin_names: ScoutV1
+
+header:
+  layout_version        : 1
+  eeprom_size           : 64
+  bus_protocol_version  : 1
+  model                 : 0x0001
+  serial                : 0
+  hardware_revision     : 0x10
+  firmware_version      : 1
+  name                  : "wifi"
+
+groups:
+  - name: wifi
+    descriptors:
+      - type        : spi-slave
+        ss_pin      : D7
+        speed       : 0 # TODO
+
+      - type        : uart
+        rx_pin      : TX1
+        tx_pin      : RX1
+        speed       : 115200
+
+      - type        : io-pin
+        name        : "pgm"
+        pin         : D6
+
+      - type        : power-usage
+        pin         : VBAT
+        # TODO: These are dummy values
+        minimum     : 0
+        typical     : 1
+        maximum     : 100
+
+
+  - name: sd
+    descriptors:
+      - type        : spi-slave
+        ss_pin      : D8
+        speed       : 0 # TODO
+
+      - type        : power-usage
+        pin         : 3V3
+        # TODO: These are dummy values
+        minimum     : 0
+        typical     : 1
+        maximum     : 100
+
+  - name: eep
+    descriptors:
+      - type        : spi-slave
+        ss_pin      : SS
+        speed       : 33 # TODO, is this really 33Mhz?
+
+      - type        : power-usage
+        pin         : 3V3
+        # TODO: These are dummy values
+        minimum     : 0
+        typical     : 1
+        maximum     : 100
+
+# vim: set sw=2 sts=2 et
