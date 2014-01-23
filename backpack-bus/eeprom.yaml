@@ -18,51 +18,90 @@ header:
 groups:
   - name: wifi
     descriptors:
+      # SPI is the main communication channel to the Gainspan S2W
+      # module. Inside the GS1011 SoC, it uses the "Fast SPI block",
+      # which according to the datasheet (DS001) goes up to 3.5Mhz
       - type        : spi-slave
         ss_pin      : D7
-        speed       : 0 # TODO
+        speed       : 3.5
 
-      - type        : uart
-        rx_pin      : TX1
-        tx_pin      : RX1
-        speed       : 115200
-
+      # This pin is connected to GPIO27 on the GS1011 SoC and puts the
+      # GS1011 module in a programming mode when pulled high on
+      # power-on.
       - type        : io-pin
         name        : "pgm"
         pin         : D6
 
+      # This is the power usage for the GS1011 chip and an attached
+      # EEPROM chip (which is a different one from the one described by
+      # the eep group below).
+      # The GS1011 module is also connected to the 3V3 pin, but no
+      # separate power usage is given for that pin. It seems the direct
+      # 3V3 is only used in standby mode (which we cannot use) and to
+      # power the RTC RAM, so it is probably negligable and thus not
+      # listed here.
       - type        : power-usage
         pin         : VBAT
-        # TODO: These are dummy values
-        minimum     : 0
-        typical     : 1
-        maximum     : 100
+        # 150 μA for the GS1011 (deep sleep), 50μA for the attached EEPROM chip
+        minimum     : 200
+        # 100 mA for the GS1011, 4mA for the attached EEPROM chip
+        typical     : 104000
+        # 250 mA for the GS1011, 15mA for the attached EEPROM chip
+        maximum     : 265000
 
+      # The GS1011 module also has an UART connected to TX1 and TX0 on
+      # the Scout side, but it is shipped with a firmware that only
+      # supports SPI, so those pins are always in high-impedance on the
+      # GS1011 side and thus not listed here.
 
   - name: sd
     descriptors:
       - type        : spi-slave
         ss_pin      : D8
-        speed       : 0 # TODO
+        # According to the SD Physical Layer Simplified Specification
+        # Version 4.10 section 5.3.2 (CSD Register) all cards should at
+        # least support 25Mhz (which is also the speed listed for
+        # default speed in Table 3-6 (Bus Speed Modes of UHS-I Card)).
+        # It seems that for SPI, higher speeds are not supported, though
+        # the specification doesn't really say anything about SPI speed
+        # (and it seems the various Bus Speed Modes don't apply to SPI).
+        speed       : 25
 
       - type        : power-usage
         pin         : 3V3
-        # TODO: These are dummy values
+        # Minimum and typical power usage depends greatly on the actual
+        # card type and manufacturer, so just leave them as unknown (0)
+        # here.
         minimum     : 0
-        typical     : 1
-        maximum     : 100
+        typical     : 0
+        # According to the SD Physical Layer Simplified Specification
+        # Version 4.10, Table 3-6 (Bus Speed Modes of UHS-I Card) the maximum
+        # power usage at "Default speed" is 0.36W (== 110mA @ 3.3V). Since SPI
+        # access will not go faster than default speed (25Mhz) and
+        # default speed is also seems to be the "legacy mode" for
+        # pre-UHS-I cards, this seems like a safe number to use a
+        # maximum.
+        maximum     : 110000
 
   - name: eep
     descriptors:
       - type        : spi-slave
         ss_pin      : SS
-        speed       : 33 # TODO, is this really 33Mhz?
+        # This speed works for every instruction except the READ
+        # instruction (which is limited to 33Mhz), but there is an
+        # alternative FAST_READ instruction which can be used instead
+        # (which requires a dummy byte before it starts to send data,
+        # presumably because it needs more than one 75Mhz clockcycle to
+        # prepare the data for shiftout).
+        speed       : 75
 
       - type        : power-usage
         pin         : 3V3
-        # TODO: These are dummy values
-        minimum     : 0
-        typical     : 1
-        maximum     : 100
+        # Deep powerdown (must be explicitely entered)
+        minimum     : 10
+        # Read at 33Mhz
+        typical     : 4000
+        # Write and erase operations
+        maximum     : 15000
 
-# vim: set sw=2 sts=2 et
+# vim: set sw=2 sts=2 et:
