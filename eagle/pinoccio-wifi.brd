@@ -823,6 +823,8 @@ Please make sure your boards conform to these design rules.</description>
 <via x="13.462" y="42.799" extent="1-16" drill="0.4064"/>
 <via x="16.9672" y="42.799" extent="1-16" drill="0.4064"/>
 <via x="16.9672" y="45.339" extent="1-16" drill="0.4064"/>
+<via x="3.7338" y="42.6974" extent="1-16" drill="0.4064"/>
+<via x="3.7084" y="40.5384" extent="1-16" drill="0.4064"/>
 </signal>
 <signal name="WIFI-VCC" class="1">
 <contactref element="C2" pad="1"/>
@@ -1214,6 +1216,11 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="D5">
 <contactref element="JP-L" pad="P$13"/>
+<contactref element="U1" pad="P$2"/>
+<wire x1="1.651" y1="15.37" x2="0.6604" y2="16.3606" width="0.2032" layer="1"/>
+<wire x1="0.6604" y1="16.3606" x2="0.6604" y2="57.2008" width="0.2032" layer="1"/>
+<wire x1="0.6604" y1="57.2008" x2="1.7568" y2="58.2972" width="0.2032" layer="1"/>
+<wire x1="1.7568" y1="58.2972" x2="3.0988" y2="58.2972" width="0.2032" layer="1"/>
 </signal>
 <signal name="D6">
 <contactref element="JP-L" pad="P$14"/>
