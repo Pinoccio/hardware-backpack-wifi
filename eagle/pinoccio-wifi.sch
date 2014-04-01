@@ -2306,7 +2306,7 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <sheets>
 <sheet>
 <plain>
-<text x="238.76" y="1.27" size="2.54" layer="94" font="vector">0.13</text>
+<text x="238.76" y="1.27" size="2.54" layer="94" font="vector">1.1</text>
 <rectangle x1="0.38735" y1="0.29845" x2="0.41275" y2="0.31115" layer="21"/>
 <rectangle x1="0.36195" y1="0.31115" x2="0.45085" y2="0.32385" layer="21"/>
 <rectangle x1="0.33655" y1="0.32385" x2="0.47625" y2="0.33655" layer="21"/>
@@ -5472,6 +5472,11 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 <pinref part="JP-L" gate="G$1" pin="13"/>
 <wire x1="233.68" y1="147.32" x2="218.44" y2="147.32" width="0.1524" layer="91"/>
 <label x="218.44" y="147.32" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U1" gate="GS1011MIPS" pin="GPIO28"/>
+<wire x1="134.62" y1="154.94" x2="124.46" y2="154.94" width="0.1524" layer="91"/>
+<label x="124.46" y="154.94" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="D6" class="0">
