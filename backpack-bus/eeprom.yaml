@@ -11,7 +11,7 @@ header:
   bus_protocol_version  : 1
   model                 : 0x0001
   serial                : 0
-  hardware_revision     : 0x10
+  hardware_revision     : 0x11
   firmware_version      : 1
   name                  : "wifi"
 
@@ -31,6 +31,12 @@ groups:
       - type        : io-pin
         name        : "pgm"
         pin         : D6
+
+      # This pin is connected to GPIO28 on the GS1011 SoC and goes high
+      # when the GS1011 module has SPI data ready to read
+      - type        : io-pin
+        name        : "rdy"
+        pin         : D5
 
       # This is the power usage for the GS1011 chip and an attached
       # EEPROM chip (which is a different one from the one described by
