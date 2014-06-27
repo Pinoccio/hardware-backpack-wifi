@@ -2279,8 +2279,8 @@ Basic schematic elements and footprints for 0603, 1206, and PTH resistors.</desc
 </classes>
 <parts>
 <part name="FRAME1" library="Pinoccio" deviceset="FRAME-LETTER" device=""/>
-<part name="JP-R" library="Pinoccio" deviceset="M16" device="2MM"/>
-<part name="JP-L" library="Pinoccio" deviceset="M16" device="2MM"/>
+<part name="JP-R" library="Pinoccio" deviceset="M16" device="2MM" value=""/>
+<part name="JP-L" library="Pinoccio" deviceset="M16" device="2MM" value=""/>
 <part name="U1" library="Pinoccio" deviceset="GS1011MIPS" device=""/>
 <part name="U$1" library="Pinoccio" deviceset="MICROSD" device=""/>
 <part name="C5" library="Pinoccio" deviceset="CAP" device="0603-CAP" value="22uf"/>
